@@ -38,7 +38,7 @@ if __name__ == '__main__':
       #gpsd.fix.epv,'ept ' , gpsd.fix.ept,'climb ' , gpsd.fix.climb,'track ' ,
       #gpsd.fix.track,'mode ' , gpsd.fix.mode,'sats ' , gpsd.satellites,
 
-      time.sleep(0) #set to whatever
+      time.sleep(10) #set to whatever
 
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
     print "\nKilling Thread..."
