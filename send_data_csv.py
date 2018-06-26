@@ -7,6 +7,7 @@ from gps import *
 from time import *
 import time
 import threading
+from datetime import datetime
 
 gpsd = None #seting the global variable
 
@@ -30,7 +31,11 @@ if __name__ == '__main__':
   gpsp = GpsPoller() # create the thread
   try:
     gpsp.start() # start it up
+    initial_time = datetime.now()
     while True:
+      current_time = datetime.now()
+      time_diff = current_time - initial_time
+      if (int(time_diff.total_seconds()) % 10 == 0):
       #It may take a second or two to get good data
       #print gpsd.fix.latitude,', ',gpsd.fix.longitude,'  Time: ',gpsd.utc
 
