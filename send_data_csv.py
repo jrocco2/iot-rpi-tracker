@@ -39,12 +39,12 @@ if __name__ == '__main__':
       #It may take a second or two to get good data
       #print gpsd.fix.latitude,', ',gpsd.fix.longitude,'  Time: ',gpsd.utc
 
-      print 'lat ' , gpsd.fix.latitude, 'long ' , gpsd.fix.longitude, 'time utc' , gpsd.utc, 'speed (m/s) ' , gpsd.fix.speed, '\n'
+        print 'lat ' , gpsd.fix.latitude, 'long ' , gpsd.fix.longitude, 'time utc' , gpsd.utc, 'speed (m/s) ' , gpsd.fix.speed, '\n'
       #'altitude (m)' , gpsd.fix.altitude,'eps ' , gpsd.fix.eps,'epx ' , gpsd.fix.epx,'epv ' ,
       #gpsd.fix.epv,'ept ' , gpsd.fix.ept,'climb ' , gpsd.fix.climb,'track ' ,
       #gpsd.fix.track,'mode ' , gpsd.fix.mode,'sats ' , gpsd.satellites,
 
-      time.sleep(0) #set to whatever
+      #time.sleep(0) #set to whatever
 
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
     print "\nKilling Thread..."
