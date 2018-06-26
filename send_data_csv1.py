@@ -25,4 +25,4 @@ if __name__ == '__main__':
               old_buffer_value = buffer[-1]
 
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
-    print "Goodbye"
+    print "\nGoodbye"
