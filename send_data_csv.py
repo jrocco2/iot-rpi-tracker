@@ -32,19 +32,22 @@ if __name__ == '__main__':
   try:
     gpsp.start() # start it up
     initial_time = datetime.now()
+    buffer = []
+    old_buffer_value = ""
     while True:
       current_time = datetime.now()
       time_diff = current_time - initial_time
       if (int(time_diff.total_seconds()) % 10 == 0):
-      #It may take a second or two to get good data
-      #print gpsd.fix.latitude,', ',gpsd.fix.longitude,'  Time: ',gpsd.utc
+        # Every 10 seconds add buffer contents to list
+        buffer.append('lat: ' + str(gpsd.fix.latitude) + ', long: ' + str(gpsd.fix.longitude) + ', time utc: '
+                      + str(gpsd.utc) + ', speed (m/s): ' + str(gpsd.fix.speed))
 
-        print 'lat ' , gpsd.fix.latitude, 'long ' , gpsd.fix.longitude, 'time utc' , gpsd.utc, 'speed (m/s) ' , gpsd.fix.speed, '\n'
-      #'altitude (m)' , gpsd.fix.altitude,'eps ' , gpsd.fix.eps,'epx ' , gpsd.fix.epx,'epv ' ,
-      #gpsd.fix.epv,'ept ' , gpsd.fix.ept,'climb ' , gpsd.fix.climb,'track ' ,
-      #gpsd.fix.track,'mode ' , gpsd.fix.mode,'sats ' , gpsd.satellites,
-
-      #time.sleep(0) #set to whatever
+      else:
+          if old_buffer_value == buffer[-1]: # If old buffer = new buffer do nothing
+              pass
+          elif old_buffer_value != buffer[-1]: # else update buffer and print new value
+              print(buffer[-1])
+              old_buffer_value = buffer[-1]
 
   except (KeyboardInterrupt, SystemExit): #when you press ctrl+c
     print "\nKilling Thread..."
