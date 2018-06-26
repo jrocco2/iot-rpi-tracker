@@ -23,6 +23,7 @@ class GpsPoller(threading.Thread):
   def run(self):
     global gpsd
     while gpsp.running:
+      print 'next'
       gpsd.next() #this will continue to loop and grab EACH set of gpsd info to clear the $
 
 if __name__ == '__main__':
